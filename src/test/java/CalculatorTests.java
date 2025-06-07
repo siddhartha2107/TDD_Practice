@@ -20,4 +20,15 @@ public class CalculatorTests {
         assertTrue(exception.getMessage().contains("Input string does not starts with //"));
     }
 
+    @Test
+    void calculator_exception_negativeNumber() {
+        String invalidInput = "//;\n1;-2;3";
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Calculator.add(invalidInput);
+        });
+
+        assertTrue(exception.getMessage().contains("negative numbers not allowed"));
+    }
+
 }
