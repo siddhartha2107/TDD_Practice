@@ -31,4 +31,28 @@ public class CalculatorTests {
         assertTrue(exception.getMessage().contains("negative numbers not allowed"));
     }
 
+    @Test
+    void calculator_exception_ignore_greater_k() throws Exception {
+        String input = "//;\n2;1001";
+        assertEquals(2, Calculator.add(input));
+    }
+
+    @Test
+    void calculator_multi_len_delim() throws Exception {
+        String input = "//***\n1***2***3";
+        assertEquals(6, Calculator.add(input));
+    }
+
+    @Test
+    void calculator_basic2() throws Exception {
+        String input = "//***\n";
+        assertEquals(0, Calculator.add(input));
+    }
+
+    @Test
+    void calculator_basic3() throws Exception {
+        String input = "//***\n1";
+        assertEquals(1, Calculator.add(input));
+    }
+
 }
